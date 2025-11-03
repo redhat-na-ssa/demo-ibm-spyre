@@ -1,0 +1,11 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: github-demo
+spec:
+  href: 'https://github.com/redhat-na-ssa/demo-ibm-spyre'
+  location: ApplicationMenu
+  text: Demo - IBM Spyre on OCP
+  applicationMenu:
+    section: Git Repos
+    imageURL: /static/assets/public/imgs/logos/github.svg
