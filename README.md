@@ -28,11 +28,11 @@ $(wtoctl | grep 'oc delete')
 Setup Operators + Configurations
 
 ```sh
-oc apply -k gitops
+apply_firmly gitops
 ```
 
 Setup Model Serving Demo
 
 ```sh
-oc apply -k demo/spyre
+apply_firmly demo/spyre
 ```
