@@ -10,8 +10,9 @@ The following icon should appear in the top right of the OpenShift web console a
 
 ![Web Terminal](docs/images/web-terminal.png "Web Terminal")
 
-### Quick Start
 NOTE: Reload the page in your browser if you do not see the icon after installing the operator.
+
+### Quick Start
 
 > [!IMPORTANT]  
 > Run the following commands from the enhanced web terminal
