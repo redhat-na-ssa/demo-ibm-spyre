@@ -1,0 +1,33 @@
+apiVersion: infrastructure.opendatahub.io/v1alpha1
+kind: HardwareProfile
+metadata:
+  annotations:
+    opendatahub.io/dashboard-feature-visibility: '[]'
+    opendatahub.io/description: IBM Spyre Accelerator
+    opendatahub.io/disabled: 'false'
+    opendatahub.io/display-name: IBM Spyre
+  name: ibm-spyre
+  namespace: redhat-ods-applications
+spec:
+  identifiers:
+    - defaultCount: '1'
+      displayName: CPU
+      identifier: cpu
+      minCount: '1'
+      resourceType: CPU
+    - defaultCount: 1Mi
+      displayName: Memory
+      identifier: memory
+      minCount: 1Mi
+      resourceType: Memory
+    - defaultCount: 1
+      displayName: ibm.com/spyre_pf
+      identifier: ibm.com/spyre_pf
+      minCount: 1
+  scheduling:
+    node:
+      tolerations:
+        - effect: NoSchedule
+          key: ibm.com/spyre_pf
+          operator: Exists
+    type: Node

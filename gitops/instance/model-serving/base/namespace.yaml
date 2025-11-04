@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    openshift.io/description: "Model Serving w/ IBM Spyre Hardware"
+    openshift.io/display-name: Demo - IBM Spyre
+    # openshift.io/requester: automation
+  labels:
+    modelmesh-enabled: "false"
+    opendatahub.io/dashboard: "true"
+    # openshift.io/cluster-monitoring: "true"
+  name: demo-ibm-spyre

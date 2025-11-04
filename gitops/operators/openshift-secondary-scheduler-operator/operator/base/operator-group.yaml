@@ -1,0 +1,8 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openshift-secondary-scheduler-operator
+  namespace: openshift-secondary-scheduler-operator
+spec:
+  targetNamespaces:
+    - openshift-secondary-scheduler-operator

@@ -1,0 +1,38 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    openshift.io/display-name: granite-3-1-8b-instruct
+    serving.kserve.io/deploymentMode: RawDeployment
+  labels:
+    networking.kserve.io/visibility: exposed
+    opendatahub.io/dashboard: "true"
+  name: granite-3-1-8b-instruct
+  namespace: demo-ibm-spyre
+spec:
+  predictor:
+    automountServiceAccountToken: false
+    # imagePullSecrets:
+    # - name: oci-registry
+    maxReplicas: 1
+    minReplicas: 1
+    model:
+      modelFormat:
+        name: vLLM
+      name: ""
+      resources:
+        limits:
+          # cpu: '32'
+          # memory: 64Gi
+          ibm.com/spyre_pf: "1"
+        requests:
+          cpu: '4'
+          memory: 64Gi
+          ibm.com/spyre_pf: "1"
+      runtime: granite-3-1-8b-instruct
+      storageUri: oci://registry.redhat.io/rhelai1/modelcar-granite-3-1-8b-instruct:1.5
+    schedulerName: spyre-scheduler
+    tolerations:
+    - effect: NoSchedule
+      key: ibm.com/spyre_pf
+      operator: Exists

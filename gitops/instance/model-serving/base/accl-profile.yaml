@@ -1,0 +1,14 @@
+apiVersion: dashboard.opendatahub.io/v1
+kind: AcceleratorProfile
+metadata:
+  name: ibm-spyre
+  namespace: redhat-ods-applications
+spec:
+  description: "IBM Spyre Accelerator"
+  displayName: IBM Spyre
+  enabled: true
+  identifier: ibm.com/spyre_pf
+  tolerations:
+  - effect: NoSchedule
+    key: ibm.com/spyre_pf
+    operator: Exists
