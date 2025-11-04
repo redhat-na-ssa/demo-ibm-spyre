@@ -22,7 +22,7 @@ spec:
       name: ""
       resources:
         limits:
-          cpu: '12'
+          cpu: '32'
           memory: 64Gi
           ibm.com/spyre_pf: "1"
         requests:
