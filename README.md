@@ -36,3 +36,7 @@ Setup Model Serving Demo
 ```sh
 apply_firmly demo/spyre
 ```
+
+## Additional Info
+
+- https://github.com/vllm-project/vllm-spyre
