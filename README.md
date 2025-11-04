@@ -37,6 +37,12 @@ Setup Model Serving Demo
 apply_firmly demo/spyre
 ```
 
+Uninstall Demo
+
+```sh
+oc delete -k demo/spyre
+```
+
 ## Additional Info
 
 - https://github.com/vllm-project/vllm-spyre
