@@ -1,0 +1,47 @@
+apiVersion: spyre.ibm.com/v1alpha1
+kind: SpyreClusterPolicy
+metadata:
+  name: spyreclusterpolicy
+spec:
+  cardManagement:
+    config:
+      pfRunnerImage: 'icr.io/ibmaiu_internal/x86_64/release/dd2/spyredriver-image@sha256:0d098b4be6eeee55fb19b922ad623a3138c0495543e72b01f61378b0b0c17bfb'
+      spyreFilter: .
+      vfRunnerImage: 'icr.io/ibmaiu_internal/x86_64/release/dd2/spyredriver-image@sha256:0d098b4be6eeee55fb19b922ad623a3138c0495543e72b01f61378b0b0c17bfb'
+    enabled: false
+    image: aiucardmgmt
+    imagePullPolicy: Always
+    repository: icr.io/ibmaiu_internal/x86_64
+    version: latest
+  devicePlugin:
+    configName: senlib_config.json
+    configPath: /etc/aiu
+    image: spyre-device-plugin
+    initContainer:
+      executePolicy: IfNotPresent
+      image: spyre-device-plugin-init
+      repository: quay.io/ibm-aiu
+      version: 0.2.0
+    repository: quay.io/ibm-aiu
+    version: 0.2.0
+  experimentalMode:
+    - perDeviceAllocation
+    - topologyAwareAllocation
+    - externalDeviceReservation
+  loglevel: info
+  metricsExporter:
+    enabled: false
+    image: spyre-exporter
+    metricsPath: /data
+    port: 8082
+    repository: quay.io/ibm-aiu
+    version: 0.2.0
+  podValidator:
+    enabled: true
+    image: spyre-webhook-validator
+    repository: quay.io/ibm-aiu
+    version: 0.2.0
+  scheduler:
+    image: spyre-scheduler
+    repository: quay.io/ibm-aiu
+    version: 0.2.1
