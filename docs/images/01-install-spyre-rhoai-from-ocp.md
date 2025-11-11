@@ -3,5 +3,5 @@
 - OpenShift AI https://catalog.redhat.com/software/container-stacks/detail/63b85b573112fe5a95ee9a3a
 
 <p align="center">
-<a href="/docs/02-enable-gpu-support.md">Next</a>
+<a href="/docs/02-create-accelerator-profile.md">Next</a>
 </p>
