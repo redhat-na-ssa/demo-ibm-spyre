@@ -1,4 +1,4 @@
-# 1.  Create AcceleratorProfile in OpenShift AI Dashboard settings
+# 2.  Create AcceleratorProfile in OpenShift AI Dashboard settings
 
 
 <p align="center">
