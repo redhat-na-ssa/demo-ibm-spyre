@@ -2,7 +2,27 @@
 > [!IMPORTANT]  
  This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenShift platform.  IBM Spyre hardware must be installed first before executing this demo script.
 
-## Setup OCP Web Terminal CLI
+## Install the web terminal
+### Objectives
+
+- Subscribing the Web Terminal Operator
+
+### Rationale
+
+- Provide a consistent terminal experience for those using Microsoft OS or MacOS
+- Minimize context switching
+
+### Takeaways
+
+- Many times we are shoulder surfing during deployments and this minimizes issues with different OSs (bash, zsh, etc.)
+- You can do the rest of this deployment in the terminal with your new user
+
+## Steps
+- [ ] Apply the subscription object
+
+      oc apply -f configs/00/web-terminal-subscription.yaml
+
+
 
 ### Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
