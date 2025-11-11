@@ -19,7 +19,7 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 NOTE: Reload the page in your browser if you do not see the icon after installing the operator.
 
 ## Demo - Mannual Installation
-If you do not wish to use the 'Quick Start', you may mannually perform the demo installation steps using the following instructions. 
+If you do not wish to use the 'Quick Start', you may mannually perform the demo installation steps using the following <a href="/docs/01-install-spyre-rhoai-from-ocp.md">instructions</a>. 
 
 ## Demo - Quick Start
 
