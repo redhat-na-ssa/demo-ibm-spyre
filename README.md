@@ -6,7 +6,7 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 - Red Hat OpenShift 4.11+ 
 - Red Hat OpenShift AI 2.25+
 - IBM AIU Spyre 1.0 (DD2)
-- OpenShift Web Terminal (installed via Red Hat OpenShift Operators menu)
+- OpenShift Web Terminal (see below for installation instructions)
 
 
 ## Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
