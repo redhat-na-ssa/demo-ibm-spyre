@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - banner-demo.yaml
-  - ../../gitops/instance
+  - ../../gitops/instance/model-serving
 
 components:
   - ../../gitops/branding

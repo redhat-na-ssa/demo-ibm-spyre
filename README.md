@@ -8,7 +8,6 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 - IBM AIU Spyre 1.0 (DD2)
 - OpenShift Web Terminal (see below for installation instructions)
 
-
 ## Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
 > [!IMPORTANT]  
@@ -18,8 +17,9 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 
 NOTE: Reload the page in your browser if you do not see the icon after installing the operator.
 
-## Demo - Mannual Installation
-If you do not wish to use the 'Quick Start', you may mannually perform the demo installation steps using the following <a href="/docs/01-install-spyre-rhoai-from-ocp.md">instructions</a>. 
+## Demo - Manual Installation
+
+If you do not wish to use the 'Quick Start', you may manually perform the demo installation steps using the following <a href="/docs/01-install-spyre-rhoai-from-ocp.md">instructions</a>.
 
 ## Demo - Quick Start
 
@@ -34,22 +34,24 @@ oc apply -k https://github.com/redhat-na-ssa/demo-ibm-spyre/demo/web-terminal
 $(wtoctl | grep 'oc delete')
 ```
 
-Setup Operators + Configurations
+Setup Operators + Cluster Configurations
+
+This requires `cluster-admin` and will setup the operators
 
 ```sh
-apply_firmly gitops
+apply_firmly gitops/operators
 ```
 
 Setup Model Serving Demo
 
 ```sh
-apply_firmly demo/spyre
+apply_firmly gitops/instance/model-serving
 ```
 
 Uninstall Demo
 
 ```sh
-oc delete -k demo/spyre
+oc delete -k gitops/instance/model-serving
 ```
 
 ## Additional Info
