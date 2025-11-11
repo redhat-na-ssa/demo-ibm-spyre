@@ -3,11 +3,10 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 
 ## Prerequisites
 
-- Nvidia GPU hardware or cloud provider with GPU instances
-- OpenShift 4.11+ 
-- OpenShift AI 2.25+
+- Red Hat OpenShift 4.11+ 
+- Red Hat OpenShift AI 2.25+
 - IBM AIU Spyre 1.0 (DD2)
-- OpenShift Web Terminal 
+- OpenShift Web Terminal (installed via Red Hat OpenShift Operators menu)
 
 ### Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
