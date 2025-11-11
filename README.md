@@ -1,8 +1,8 @@
 # demo-ibm-spyre
 > [!IMPORTANT]  
- This demo has been created for use with IBM Spyre Hardware on OCP.  IBM Spyre hardware must be installed first before executing this demo script.
+ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenShift platform.  IBM Spyre hardware must be installed first before executing this demo script.
 
-## Setup OCP Web Terminal
+## Setup OCP Web Terminal CLI
 
 ### Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
