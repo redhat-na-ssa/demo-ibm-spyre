@@ -34,7 +34,7 @@ oc apply -k https://github.com/redhat-na-ssa/demo-ibm-spyre/demo/web-terminal
 $(wtoctl | grep 'oc delete')
 ```
 
-Setup Operators + Cluster Configurations
+### Setup Operators + Cluster Configurations
 
 This requires `cluster-admin` and will setup the operators
 
@@ -42,13 +42,17 @@ This requires `cluster-admin` and will setup the operators
 apply_firmly gitops/operators
 ```
 
+### Setup Demo
+
+This should be able to be run as a user that has access to create a namespace.
+
 Setup Model Serving Demo
 
 ```sh
 apply_firmly gitops/instance/model-serving
 ```
 
-Uninstall Demo
+### Uninstall Demo
 
 ```sh
 oc delete -k gitops/instance/model-serving
