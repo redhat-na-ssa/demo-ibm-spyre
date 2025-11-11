@@ -1,4 +1,4 @@
-# Add Custom Serving Runtime in OpenShift
+# 3. Add Custom Serving Runtime in OpenShift
 
 
 <p align="center">
