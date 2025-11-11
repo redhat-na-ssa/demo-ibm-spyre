@@ -8,6 +8,7 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 - IBM AIU Spyre 1.0 (DD2)
 - OpenShift Web Terminal (installed via Red Hat OpenShift Operators menu)
 
+
 ### Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
 > [!IMPORTANT]  
@@ -17,13 +18,14 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 
 NOTE: Reload the page in your browser if you do not see the icon after installing the operator.
 
+
 ### Quick Start
 
 > [!IMPORTANT]  
 > Run the following commands from the enhanced web terminal
 
 ```sh
-# apply the enhanced web terminal
+# apply the enhanced (OpenShift) web terminal
 oc apply -k https://github.com/redhat-na-ssa/demo-ibm-spyre/demo/web-terminal
 
 # delete old web terminal
