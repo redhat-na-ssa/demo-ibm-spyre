@@ -11,13 +11,13 @@ Under Home > Search > *Type in InferenceService*
 
 
 
-!(docs/images/search_inferenceService)
+!(docs/images/search_inferenceservice.png)
 
 ---
 
 ### Click Create
 
-!(docs/images/create_inferenceService)
+!(docs/images/create_inferenceservice.png)
 
 Copy and Paste this YAML.
 
@@ -64,7 +64,7 @@ This part can take 5-10 minutes.
 
 Wait for the Ready Condition at the bottom of the page to be True
 
-!(docs/images/create_inferenceService)
+!(docs/images/ready_condition.png)
 
 
 
