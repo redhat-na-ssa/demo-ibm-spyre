@@ -16,6 +16,7 @@ Under Networking > Routes > *Copy the URL*
 ### Open up the Web Terminal inside of OpenShift
 
 ![Create](images/webterminal.png)
+---
 ![Create](images/webterminal2.png)
 
 ---
@@ -23,7 +24,7 @@ Under Networking > Routes > *Copy the URL*
 Test our InferenceService and Model!
 -----
 
-#### [IMPORTANT] Comfirm that your Route matches the one below. If not, replace the route with your own.
+#### [IMPORTANT] Comfirm that your new route matches the one below. If not, replace the route with your own.
 
 #### Copy and Paste this command into the terminal, feel free to change the prompt, and then run it.
 
