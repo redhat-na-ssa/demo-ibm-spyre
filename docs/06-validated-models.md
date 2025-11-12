@@ -9,7 +9,9 @@ Under Networking > Routes > *Copy the URL*
 ![Search](images/copy_route.png)
 
 
-#### At this point you could place the url inside of an application or api gateway. For now, let's test it by using just a curl command in our terminal.
+#### At this point you could place the url inside of an application or api gateway. 
+
+#### For now, let's test it by using just a curl command in our terminal.
 
 ---
 
