@@ -1,4 +1,4 @@
-# 6. Validated Models
+# 6. Model Inference
 
 These instructions are for Kubeadmins and ldap users who are validating their model(s)
 
