@@ -35,8 +35,8 @@ $(wtoctl | grep 'oc delete')
 ```
 
 ### Setup Operators + Cluster Configurations
-
-This requires `cluster-admin` and will setup the operators
+> [!IMPORTANT]  
+>  These instructions are only for Kubeadmins 
 
 ```sh
 apply_firmly gitops/operators
