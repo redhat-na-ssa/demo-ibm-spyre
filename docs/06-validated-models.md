@@ -16,15 +16,16 @@ Under Networking > Routes > *Copy the URL*
 ### Open up the Web Terminal inside of OpenShift
 
 ![Create](images/webterminal.png)
+![Create](images/webterminal2.png)
 
 ---
 
 Test our InferenceService and Model!
 -----
 
-#### [IMPORTANT] Comfirm that your Route matches the one below, otherwise, replace the route in the command with your own.
+#### [IMPORTANT] Comfirm that your Route matches the one below. If not, replace the route with your own.
 
-#### Copy and Paste this command into the terminal and run it.
+#### Copy and Paste this command into the terminal, feel free to change the prompt, and then run it.
 
 ```
 curl -k "https://granite-3-1-8b-instruct-vllm-spyre-scheduler.apps.spyre-001.nvidia.eng.rdu2.dc.redhat.com/v1/completions" \
