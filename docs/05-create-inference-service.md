@@ -2,24 +2,26 @@
 
 These instructions are for Kubeadmins and ldap users who are using RHOAI to create an Inference Service.
 
-Confirm you are in the vllm-spyre-scheduler Project/Namespace
+*Confirm you are in the vllm-spyre-scheduler Project/Namespace*
+
 ---
 
-### Search for the InferenceService Resource
+## Search for the InferenceService Resource
 
 Under Home > Search > *Type in InferenceService*
+---
 
-
-
-!(docs/images/search_inferenceservice.png)
+![Search](images/search_inferenceservice.png)
 
 ---
 
-### Click Create
+### Click Create InferenceService
 
-!(docs/images/create_inferenceservice.png)
+![Create](images/create_inferenceservice.png)
 
-Copy and Paste this YAML.
+---
+
+#### Copy and Paste this YAML.
 
 ```
 apiVersion: serving.kserve.io/v1beta1
@@ -55,20 +57,18 @@ spec:
         key: ibm.com/spyre_pf
         operator: Exists
 ```
+And press Create again at the bottom of the page to deploy the InferenceService connected to our granite model!
+
 ---
-And press Create again!
 
-### Wait for your model to be ready
-
-This part can take 5-10 minutes.
 
 Wait for the Ready Condition at the bottom of the page to be True
+-----
+  
+Connecting to our model and deploying the Kserve Container can take 5-10 minutes.
 
-!(docs/images/ready_condition.png)
+![Ready](images/ready_condition.png)
 
-
-
-[Image of Step 3]
 
 ---
 
