@@ -23,8 +23,10 @@ If you do not wish to use the 'Quick Start', you may manually perform the demo i
 
 ## Demo - Quick Start
 
-> [!IMPORTANT]  
-> Run the following commands from the enhanced web terminal
+> [!IMPORTANT]
+> Run the following commands from the enhanced web terminal.
+>
+> These instructions require `cluster-admin` to install and configure the web terminal
 
 ```sh
 # apply the enhanced (OpenShift) web terminal
@@ -35,21 +37,30 @@ $(wtoctl | grep 'oc delete')
 ```
 
 ### Setup Operators + Cluster Configurations
-> [!IMPORTANT]  
->  These instructions are only for Kubeadmins 
+
+> [!IMPORTANT]
+These instructions require `cluster-admin` and will setup the operators
 
 ```sh
 apply_firmly gitops/operators
 ```
 
-### Setup Demo
-
-This should be able to be run as a user that has access to create a namespace.
-
-Setup Model Serving Demo
+### Setup Model Serving Demo
 
 ```sh
 apply_firmly gitops/instance/model-serving
+```
+
+### User Model Serving
+
+The following will setup model serving for a user with `self-provisioner`
+
+```sh
+# create a new project / namespace
+oc new-project [username]
+
+# create model inference
+oc apply -k gitops/instance/model-serving/base
 ```
 
 ### Uninstall Demo
