@@ -21,7 +21,7 @@ users with `cluster-admin` or an operations team.
 ## Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
 > [!NOTE]
-> following icon should appear in the top right of the OpenShift web console after you have installed the operator. Clicking this icon launches the web terminal.
+> The following icon should appear in the top right of the OpenShift web console after you have installed the operator. Clicking this icon launches the web terminal.
 
 ![Web Terminal](docs/images/web-terminal.png "Web Terminal")
 
