@@ -7,6 +7,11 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 - Red Hat OpenShift AI 2.25+
 - IBM AIU Spyre 1.0 (DD2)
 - OpenShift Web Terminal (see below for installation instructions)
+- OpenShift `cluster-admin` permissions
+
+The following instruction are intended for a `cluster-admin` to run.
+
+[User Model Serving](#user-model-serving) listed below should be able to be run by a user with the `self-provisioner` role or access to create projects / namespaces.
 
 ## Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
@@ -26,7 +31,7 @@ If you do not wish to use the 'Quick Start', you may manually perform the demo i
 > [!IMPORTANT]
 > Run the following commands from the enhanced web terminal.
 >
-> These instructions require `cluster-admin` to install and configure the web terminal
+> `cluster-admin` is required
 
 ```sh
 # apply the enhanced (OpenShift) web terminal
