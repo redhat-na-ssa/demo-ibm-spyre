@@ -23,7 +23,7 @@ Under Home > Search > *Type in InferenceService*
 
 #### Copy and Paste this YAML.
 
-```
+```yaml
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
@@ -57,10 +57,10 @@ spec:
         key: ibm.com/spyre_pf
         operator: Exists
 ```
+
 And press Create again at the bottom of the page to deploy the InferenceService connected to our granite model!
 
 ---
-
 
 Wait for the Ready Condition at the bottom of the page to be True
 -----
@@ -68,7 +68,6 @@ Wait for the Ready Condition at the bottom of the page to be True
 Connecting to our model and deploying the Kserve Container can take 5-10 minutes.
 
 ![Ready](images/ready_condition.png)
-
 
 ---
 

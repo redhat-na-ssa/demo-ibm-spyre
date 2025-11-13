@@ -2,7 +2,6 @@
 
 > [!IMPORTANT]  
 > These instructions are only for `cluster-admin` who are setting up RHOAI & OCP services
->
 
 <p align="center">
   <a href="/docs/02-create-accelerator-profile.md">Previous</a>
