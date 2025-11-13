@@ -9,3 +9,4 @@ resources:
   - dsc.yaml
   - dsci.yaml
   - odh-dashboard.yaml
+  # - fix-kubeadmin.yaml
