@@ -1,4 +1,4 @@
-# demo-ibm-spyre
+# Demo IBM Spyre Hardware on OpenShift
 
 This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenShift platform.  
 
