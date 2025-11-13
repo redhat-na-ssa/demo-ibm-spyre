@@ -7,10 +7,8 @@ users with `cluster-admin` or an operations team.
 
 [User Model Serving](#user-model-serving) listed below should be able to be run by a user with the `self-provisioner` role or access to create projects / namespaces.
 
-> [!IMPORTANT]
-> The following instruction are intended for a `cluster-admin` to run.
->
-> Errors may occur if this is run by users without sufficient permissions.
+> [!NOTE]
+> Verify your permissions if you experience errors.
 
 ## Prerequisites
 
