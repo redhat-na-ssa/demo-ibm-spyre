@@ -1,18 +1,24 @@
 # demo-ibm-spyre
-This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenShift platform.  The following prerequisites must be satisfied before executing this demo script.
+
+This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenShift platform.  
+
+The following automates the configuration of prerequisites and is specifically intended for
+users with `cluster-admin` or an operations team.
+
+[User Model Serving](#user-model-serving) listed below should be able to be run by a user with the `self-provisioner` role or access to create projects / namespaces.
+
+> [!IMPORTANT]
+> The following instruction are intended for a `cluster-admin` to run.
+>
+> Errors may occur if this is run by users without sufficient permissions.
 
 ## Prerequisites
 
-- Red Hat OpenShift 4.11+ 
+- Red Hat OpenShift 4.11+
 - Red Hat OpenShift AI 2.25+
 - IBM AIU Spyre 1.0 (DD2)
 - OpenShift Web Terminal (see below for installation instructions)
 - OpenShift `cluster-admin` permissions
-
-> [!IMPORTANT]
-> The following instruction are intended for a `cluster-admin` to run.
-
-[User Model Serving](#user-model-serving) listed below should be able to be run by a user with the `self-provisioner` role or access to create projects / namespaces.
 
 ## Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
