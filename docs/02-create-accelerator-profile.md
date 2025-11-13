@@ -1,7 +1,7 @@
 # 2.  Create AcceleratorProfile in OpenShift AI Dashboard settings
 
 > [!IMPORTANT]  
-> These instructions are only for Kubeadmins who are setting up RHOAI & OCP services
+> These instructions are only for `cluster-admin` who are setting up RHOAI & OCP services
 >
 
 <p align="center">

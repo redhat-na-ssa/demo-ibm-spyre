@@ -9,13 +9,14 @@ This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenSh
 - OpenShift Web Terminal (see below for installation instructions)
 - OpenShift `cluster-admin` permissions
 
-The following instruction are intended for a `cluster-admin` to run.
+> [!IMPORTANT]
+> The following instruction are intended for a `cluster-admin` to run.
 
 [User Model Serving](#user-model-serving) listed below should be able to be run by a user with the `self-provisioner` role or access to create projects / namespaces.
 
 ## Install the [OpenShift Web Terminal](https://docs.openshift.com/container-platform/4.12/web_console/web_terminal/installing-web-terminal.html)
 
-> [!IMPORTANT]  
+> [!NOTE]
 > following icon should appear in the top right of the OpenShift web console after you have installed the operator. Clicking this icon launches the web terminal.
 
 ![Web Terminal](docs/images/web-terminal.png "Web Terminal")
@@ -24,7 +25,7 @@ NOTE: Reload the page in your browser if you do not see the icon after installin
 
 ## Demo - Manual Installation
 
-If you do not wish to use the 'Quick Start', you may manually perform the demo installation steps using the following <a href="/docs/01-install-spyre-rhoai-from-ocp.md">instructions</a>.
+If you do not wish to use the `Quick Start`, you may manually perform the demo installation steps using the following <a href="/docs/01-install-spyre-rhoai-from-ocp.md">instructions</a>.
 
 ## Demo - Quick Start
 

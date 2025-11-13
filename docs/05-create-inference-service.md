@@ -1,6 +1,6 @@
 # 5. Create Inference Service
 
-These instructions are for Kubeadmins and ldap users who are using RHOAI to create an Inference Service.
+These instructions are for `cluster-admin` and ldap users who are using RHOAI to create an Inference Service.
 
 *Confirm you are in the vllm-spyre-scheduler Project/Namespace*
 
