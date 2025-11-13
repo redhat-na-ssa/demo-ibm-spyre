@@ -4,6 +4,10 @@ metadata:
   name: odh-dashboard-config
   namespace: redhat-ods-applications
 spec:
+  dashboardConfig:
+    disableHardwareProfiles: false
+  modelServerSizes: []
+  notebookSizes: []
   notebookController:
     enabled: true
     notebookNamespace: rhods-notebooks
