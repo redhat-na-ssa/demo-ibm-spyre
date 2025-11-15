@@ -1,0 +1,148 @@
+apiVersion: kubelet.config.k8s.io/v1beta1
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    cacheTTL: 0s
+  x509:
+    clientCAFile: /etc/kubernetes/kubelet-ca.crt
+authorization:
+  webhook:
+    cacheAuthorizedTTL: 0s
+    cacheUnauthorizedTTL: 0s
+cgroupDriver: systemd
+cgroupRoot: /
+clusterDNS:
+- 172.30.0.10
+clusterDomain: cluster.local
+containerLogMaxSize: 50Mi
+containerRuntimeEndpoint: ""
+cpuManagerReconcilePeriod: 0s
+enableSystemLogQuery: true
+evictionPressureTransitionPeriod: 0s
+featureGates:
+  AWSClusterHostedDNS: false
+  AWSEFSDriverVolumeMetrics: true
+  AdditionalRoutingCapabilities: false
+  AdminNetworkPolicy: true
+  AlibabaPlatform: true
+  AutomatedEtcdBackup: false
+  AzureWorkloadIdentity: true
+  BareMetalLoadBalancer: true
+  BootcNodeManagement: false
+  BuildCSIVolumes: true
+  CSIDriverSharedResource: false
+  ChunkSizeMiB: true
+  CloudDualStackNodeIPs: true
+  ClusterAPIInstall: false
+  ClusterAPIInstallIBMCloud: false
+  ClusterMonitoringConfig: false
+  ConsolePluginContentSecurityPolicy: false
+  DNSNameResolver: false
+  DisableKubeletCloudCredentialProviders: true
+  DynamicResourceAllocation: false
+  EtcdBackendQuota: false
+  EventedPLEG: false
+  Example: false
+  ExternalOIDC: false
+  GCPClusterHostedDNS: false
+  GCPLabelsTags: true
+  GatewayAPI: false
+  HardwareSpeed: true
+  ImageStreamImportMode: false
+  IngressControllerDynamicConfigurationManager: false
+  IngressControllerLBSubnetsAWS: true
+  InsightsConfig: false
+  InsightsConfigAPI: false
+  InsightsOnDemandDataGather: false
+  InsightsRuntimeExtractor: false
+  KMSv1: true
+  MachineAPIMigration: false
+  MachineAPIOperatorDisableMachineHealthCheckController: false
+  MachineAPIProviderOpenStack: false
+  MachineConfigNodes: false
+  ManagedBootImages: true
+  ManagedBootImagesAWS: true
+  MaxUnavailableStatefulSet: false
+  MetricsCollectionProfiles: false
+  MinimumKubeletVersion: false
+  MixedCPUsAllocation: false
+  MultiArchInstallAWS: true
+  MultiArchInstallAzure: false
+  MultiArchInstallGCP: true
+  NetworkDiagnosticsConfig: true
+  NetworkLiveMigration: true
+  NetworkSegmentation: true
+  NewOLM: true
+  NodeDisruptionPolicy: true
+  NodeSwap: false
+  NutanixMultiSubnets: false
+  OVNObservability: false
+  OnClusterBuild: false
+  OpenShiftPodSecurityAdmission: false
+  PersistentIPsForVirtualization: true
+  PinnedImages: false
+  PlatformOperators: false
+  PrivateHostedZoneAWS: true
+  ProcMountType: false
+  RouteAdvertisements: false
+  RouteExternalCertificate: false
+  ServiceAccountTokenNodeBinding: false
+  SetEIPForNLBIngressController: true
+  SignatureStores: false
+  SigstoreImageVerification: false
+  TranslateStreamCloseWebsocketRequests: false
+  UpgradeStatus: false
+  UserNamespacesPodSecurityStandards: false
+  UserNamespacesSupport: false
+  VSphereControlPlaneMachineSet: true
+  VSphereDriverConfiguration: true
+  VSphereMultiNetworks: false
+  VSphereMultiVCenters: true
+  VSphereStaticIPs: true
+  ValidatingAdmissionPolicy: true
+  VolumeAttributesClass: false
+  VolumeGroupSnapshot: false
+fileCheckFrequency: 0s
+httpCheckFrequency: 0s
+imageMaximumGCAge: 0s
+imageMinimumGCAge: 0s
+kind: KubeletConfiguration
+kubeAPIBurst: 100
+kubeAPIQPS: 50
+logging:
+  flushFrequency: 0
+  options:
+    json:
+      infoBufferSize: "0"
+    text:
+      infoBufferSize: "0"
+  verbosity: 0
+maxPods: 250
+memorySwap: {}
+nodeStatusReportFrequency: 5m0s
+nodeStatusUpdateFrequency: 10s
+podPidsLimit: 4096
+protectKernelDefaults: true
+rotateCertificates: true
+runtimeRequestTimeout: 0s
+serializeImagePulls: false
+serverTLSBootstrap: true
+shutdownGracePeriod: 0s
+shutdownGracePeriodCriticalPods: 0s
+staticPodPath: /etc/kubernetes/manifests
+streamingConnectionIdleTimeout: 0s
+syncFrequency: 0s
+systemCgroups: /system.slice
+tlsCipherSuites:
+- TLS_AES_128_GCM_SHA256
+- TLS_AES_256_GCM_SHA384
+- TLS_CHACHA20_POLY1305_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+- TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+tlsMinVersion: VersionTLS12
+volumeStatsAggPeriod: 0s
