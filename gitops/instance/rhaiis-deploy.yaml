@@ -1,0 +1,95 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vllm-sa
+  namespace: rhaiis-namespace
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: granite-spyre
+  namespace: rhaiis-namespace
+  labels:
+    app: granite-spyre
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: granite-spyre
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: granite-spyre
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: spyre-001.nvidia.eng.rdu2.dc.redhat.com
+      restartPolicy: Always
+      serviceAccountName: vllm-sa
+      schedulerName: aiu-scheduler
+      # securityContext:
+      #   runAsUser: 2000
+      #   fsGroup: 2000
+      containers:
+        - resources:
+            limits:
+              ibm.com/aiu_pf: '1'
+            requests:
+              ibm.com/aiu_pf: '1'
+          name: vllm-runner
+          env:
+            - name: VLLM_SPYRE_USE_CB
+              value: '1'
+            - name: HF_HOME
+              value: /models
+            - name: HUGGING_FACE_HUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: huggingface-secret
+                  key: hf_token
+          ports:
+            - name: http
+              containerPort: 8001
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: dshm
+              mountPath: /dev/shm
+            - name: model-storage
+              mountPath: /models
+          terminationMessagePolicy: File
+          image: 'quay.io/ibm-aiu/vllm-spyre:latest.amd64'
+          args:
+            - ibm-granite/granite-3.3-8b-instruct
+            - '--tokenizer'
+            - ibm-granite/granite-3.3-8b-instruct
+            - '--port'
+            - '8001'
+            - '--host'
+            - 0.0.0.0
+            - '--download-dir'
+            - /models
+            - '--max-model-len'
+            - '4096'
+            - '--max-num-seqs'
+            - '4'
+            - '--tensor-parallel-size'
+            - '1'
+      serviceAccount: vllm-sa
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 32Gi
+        - name: model-storage
+          persistentVolumeClaim:
+            claimName: model-cache
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

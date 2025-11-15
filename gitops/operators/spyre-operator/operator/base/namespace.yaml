@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   annotations:
     openshift.io/display-name: "IBM Spyre Operator"
-  labels:
-    openshift.io/cluster-monitoring: 'true'
+  # labels:
+  #   openshift.io/cluster-monitoring: 'true'
   name: spyre-operator
