@@ -6,7 +6,7 @@ metadata:
     notebooks.opendatahub.io/last-image-selection: s2i-minimal-notebook:2025.2
     notebooks.opendatahub.io/last-image-version-git-commit-selection: d3137ca
     notebooks.opendatahub.io/last-size-selection: "Small"
-    # notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
+    # notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=science
     opendatahub.io/accelerator-name: ""
     opendatahub.io/accelerator-profile-namespace: ""
     opendatahub.io/hardware-profile-name: demo-sized
@@ -16,13 +16,13 @@ metadata:
     # opendatahub.io/username: kube:admin
     opendatahub.io/workbench-image-namespace: ""
     openshift.io/description: ""
-    openshift.io/display-name: wb-cpu-wo-storage
+    openshift.io/display-name: science
   labels:
-    app: wb-cpu-wo-storage
+    app: science
     opendatahub.io/dashboard: "true"
     opendatahub.io/odh-managed: "true"
     # opendatahub.io/user: kube-3aadmin
-  name: wb-cpu-wo-storage
+  name: science
   namespace: demo-notebooks
 spec:
   template:
@@ -34,7 +34,7 @@ spec:
             --ServerApp.port=8888
             --ServerApp.token=''
             --ServerApp.password=''
-            --ServerApp.base_url=/notebook/demo-notebooks/wb-cpu-wo-storage
+            --ServerApp.base_url=/notebook/demo-notebooks/science
             --ServerApp.quit_button=False
         - name: JUPYTER_IMAGE
           value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
@@ -53,14 +53,14 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/demo-notebooks/wb-cpu-wo-storage/api
+            path: /notebook/demo-notebooks/science/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
-        name: wb-cpu-wo-storage
+        name: science
         ports:
         - containerPort: 8888
           name: notebook-port
@@ -68,7 +68,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/demo-notebooks/wb-cpu-wo-storage/api
+            path: /notebook/demo-notebooks/science/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
@@ -98,7 +98,7 @@ spec:
         - --provider=openshift
         - --https-address=:8443
         - --http-address=
-        - --openshift-service-account=wb-cpu-wo-storage
+        - --openshift-service-account=science
         - --cookie-secret-file=/etc/oauth/config/cookie_secret
         - --cookie-expire=24h0m0s
         - --tls-cert=/etc/tls/private/tls.crt
@@ -107,11 +107,11 @@ spec:
         - --upstream-ca=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         - --email-domain=*
         - --skip-provider-button
-        - --client-id=wb-cpu-wo-storage-demo-notebooks-oauth-client
+        - --client-id=science-demo-notebooks-oauth-client
         - --client-secret-file=/etc/oauth/client/secret
         - --scope=user:info user:check-access
-        - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"wb-cpu-wo-storage","namespace":"$(NAMESPACE)"}
-        # - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
+        - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"science","namespace":"$(NAMESPACE)"}
+        # - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=science
         env:
         - name: NAMESPACE
           valueFrom:
@@ -159,7 +159,7 @@ spec:
         - mountPath: /etc/tls/private
           name: tls-certificates
       enableServiceLinks: false
-      serviceAccountName: wb-cpu-wo-storage
+      serviceAccountName: science
       volumes:
       - emptyDir:
           medium: Memory
@@ -178,15 +178,15 @@ spec:
       - name: oauth-config
         secret:
           defaultMode: 420
-          secretName: wb-cpu-wo-storage-oauth-config
+          secretName: science-oauth-config
       - name: oauth-client
         secret:
           defaultMode: 420
-          secretName: wb-cpu-wo-storage-oauth-client
+          secretName: science-oauth-client
       - name: tls-certificates
         secret:
           defaultMode: 420
-          secretName: wb-cpu-wo-storage-tls
+          secretName: science-tls
       schedulerName: spyre-scheduler
     tolerations:
     - effect: NoSchedule
