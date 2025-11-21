@@ -1,0 +1,55 @@
+FROM registry.redhat.io/rhaiis/vllm-spyre-rhel9:3.2.2 as e2e
+FROM quay.io/modh/odh-minimal-notebook-container@sha256:9592b9aed5248b77c7490f08004091174030035a76c3b198f9f01c8be0060074
+
+COPY --from=e2e /opt/sentient /opt/sentient
+COPY --from=e2e /opt/rh /opt/rh
+ENV SENDNN_DIR=/opt/sentient
+USER root
+RUN dnf -q -y install python3.12
+RUN mkdir -p /opt/ibm &&     ln -sn /opt/sentient/ /opt/ibm/aiu
+USER 1001
+ENV SEN_PROJECT_SRC=/project_src
+ENV DEEPTOOLS_PATH=${SENDNN_DIR}/share
+USER root
+RUN echo "source /opt/rh/gcc-toolset-12/enable" >> /etc/bashrc
+RUN ls -la /etc/profile.d
+RUN rm -rf /var/lib/rpm /usr/lib/.build-id
+USER 1001
+COPY --from=e2e /etc/profile.d/ibm-aiu-setup.sh /etc/profile.d/ibm-aiu-setup.sh
+USER root
+RUN chmod og+rw /etc/profile.d/ibm-aiu-setup.sh && ln -s /etc/profile.d/ibm-aiu-setup.sh /etc/bashrc-sentient-env.sh
+USER 1001
+COPY --from=e2e /var/lib/rpm /var/lib/rpm
+COPY --from=e2e /usr/lib/.build-id /usr/lib/.build-id
+USER root
+RUN dnf -q -y install libedit-devel libxml2-devel mesa-libGL  && dnf -y -q clean all
+USER 1001
+COPY --from=e2e /project_package /project_package
+COPY --from=e2e /etc/bashrc /etc/bashrc
+USER root
+RUN pip install pybind11 transformers numpy
+RUN cd /project_package &&     tar -zxf ibm-torch-sendnn-py.tar.gz &&     cd ibm-torch-sendnn-py &&     pip install --upgrade --force-reinstall ./torch_sendnn-*.whl &&     cd /project_package &&     rm -rf ibm-torch-sendnn-py
+#TODO: Update this to use python version or which pybind11 to find the correct directory to avoid build breaking when python version updates
+RUN chmod -R g+w /opt/app-root/lib/python3.11/site-packages &&  chmod -R g+w /opt/app-root/lib64/python3.11/site-packages &&   fix-permissions /opt/app-root -P
+USER 1001
+#TODO: Update here also, might not be possible with how ENV works
+ENV pybind11_DIR=/opt/app-root/lib/python3.11/site-packages/pybind11
+ENV FLEX_COMPUTE=SENTIENT
+ENV FLEX_DEVICE=VFIO
+ENV FIXED_PROMPT_LENGTH=128
+ENV FLEX_OVERWRITE_NMB_FRAME=1
+ENV FLEX_UNLINK_DEVMEM=false
+ENV COMPILATION_MODE=offline_decoder
+ENV FMS_SKIP_TP_EMBEDDING=1
+ENV TORCHINDUCTOR_COMPILE_THREADS=1
+ENV DISTRIBUTED_STRATEGY_IGNORE_MODULES=WordEmbedding
+ENV DTCOMPILER_KEEP_EXPORT=true
+ENV FLEX_RESPONSE_WORKER_MAX_PENDING_REQUESTS=32768
+ENV DT_OPT=dtversion=1,varsub=1,lxopt=1,opfusion=1,arithfold=1,dataopt=1,patchinit=1,patchprog=1,autopilot=1,weipreload=0,kvcacheopt=1,progshareopt=1
+COPY --from=e2e /opt/sentient/gitlabels.txt /opt/sentient/gitlabels.txt 
+RUN cd /opt/app-root; git clone https://github.com/foundation-model-stack/foundation-model-stack.git; cd foundation-model-stack; git -c advice.detachedHead=false checkout b5695c30749ecc9b5695c30749ecc9a2ccd38dba9844eb7f1950e8b; pip install -e .
+RUN cd /opt/app-root; git clone https://github.com/flaviabeo/aiu-fms-testing-utils.git; cd aiu-fms-testing-utils; git checkout pinned_version; pip install -e .
+
+RUN sed -i '2i source /etc/profile.d/ibm-aiu-setup.sh' /opt/app-root/bin/start-notebook.sh
+RUN sed -i '/NOTEBOOK_PROGRAM_ARGS=""/a\ \n# Set default ServerApp.max_buffer_size if NOTEBOOK_MAX_BUFFER_SIZE is not defined\nif [ -n "${NOTEBOOK_MAX_BUFFER_SIZE}" ]; then\n  NOTEBOOK_PROGRAM_ARGS+="--ServerApp.max_buffer_size=${NOTEBOOK_MAX_BUFFER_SIZE} "\nelse\n  NOTEBOOK_PROGRAM_ARGS+="--ServerApp.max_buffer_size=24000000000 "\nfi\n' /opt/app-root/bin/start-notebook.sh
+RUN pip install wurlitzer ipywidgets
