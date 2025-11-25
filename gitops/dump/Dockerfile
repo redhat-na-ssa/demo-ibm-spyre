@@ -2,7 +2,9 @@ FROM registry.redhat.io/rhaiis/vllm-spyre-rhel9:3.2.2 as e2e
 FROM quay.io/modh/odh-minimal-notebook-container@sha256:9592b9aed5248b77c7490f08004091174030035a76c3b198f9f01c8be0060074
 
 COPY --from=e2e /opt/sentient /opt/sentient
+# note: build fails here
 COPY --from=e2e /opt/rh /opt/rh
+
 ENV SENDNN_DIR=/opt/sentient
 USER root
 RUN dnf -q -y install python3.12
