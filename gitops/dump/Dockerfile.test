@@ -1,3 +1,7 @@
+# explore container
+# podman run -it --rm --entrypoint /bin/sh registry.redhat.io/rhaiis/vllm-spyre-rhel9:3.2.2
+# build container
+# podman build -t spyre -f Dockerfile.test .
 FROM registry.redhat.io/rhaiis/vllm-spyre-rhel9:3.2.2 as donor
 
 FROM quay.io/modh/odh-minimal-notebook-container@sha256:9592b9aed5248b77c7490f08004091174030035a76c3b198f9f01c8be0060074
@@ -9,7 +13,8 @@ COPY --from=donor /opt/ibm /opt/ibm
 COPY --from=donor /etc/profile.d/ibm-aiu-setup.sh /etc/profile.d/ibm-aiu-setup.sh
 
 RUN dnf -q -y install python3.12
-# RUN ln -sn /opt/sentient/ /opt/ibm/aiu/
+RUN ln -sn /opt/sentient/ /opt/ibm/spyre/
+
 RUN dnf -q -y install libedit-devel libxml2-devel mesa-libGL && \
     dnf -y -q clean all
 
@@ -27,8 +32,10 @@ RUN cd /project_package && \
       cd /project_package && \
       rm -rf ibm-torch-sendnn-py
 
-#TODO: Update this to use python version or which pybind11 to find the correct directory to avoid build breaking when python version updates
-RUN chmod -R g+w /opt/app-root/lib/python3.11/site-packages &&  chmod -R g+w /opt/app-root/lib64/python3.11/site-packages &&   fix-permissions /opt/app-root -P
+# TODO: Update this to use python version or which pybind11 to find the correct directory to avoid build breaking when python version updates
+RUN chmod -R g+w /opt/app-root/lib/python3.11/site-packages && \
+    chmod -R g+w /opt/app-root/lib64/python3.11/site-packages && \
+    fix-permissions /opt/app-root -P
 
 USER 1001
 
@@ -39,10 +46,10 @@ ENV SENDNN_DIR=/opt/sentient
 # COPY --from=donor /var/lib/rpm /var/lib/rpm
 # COPY --from=donor /usr/lib/.build-id /usr/lib/.build-id
 
-# COPY --from=donor /project_package /project_package
+COPY --from=donor /project_package /project_package
 # COPY --from=donor /etc/bashrc /etc/bashrc
 
-#TODO: Update here also, might not be possible with how ENV works
+# TODO: Update here also, might not be possible with how ENV works
 ENV pybind11_DIR=/opt/app-root/lib/python3.11/site-packages/pybind11
 ENV FLEX_COMPUTE=SENTIENT
 ENV FLEX_DEVICE=VFIO
