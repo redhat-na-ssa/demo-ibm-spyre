@@ -75,6 +75,12 @@ oc new-project [username]
 oc apply -k gitops/instance/model-serving/base
 ```
 
+### Setup Workbench Example
+
+```sh
+apply_firmly gitops/instance/rhoai-notebooks
+```
+
 Once the model is deployed, you can use a curl command to send a request to the model and perform inferencing.  For example:
 
 ```sh
