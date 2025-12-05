@@ -77,10 +77,11 @@ oc apply -k gitops/instance/model-serving/base
 
 Once the model is deployed, you can use a curl command to send a request to the model and perform inferencing.  For example:
 
-curl -k "http://granite-3-1-8b-instruct-predictor.jv535825.svc.cluster.local/v1/completions" \
+```sh
+curl -k "http://granite-3-1-8b-instruct-predictor.demo-ibm-spyre.svc.cluster.local/v1/completions" \
 -H "Content-Type: application/json" \
--d '{"model":"granite-3-1-8b-instruct","prompt":"Write a short poem.","temperature":0,"max_tokens":128}' \
-| jq
+-d '{"model":"granite-3-1-8b-instruct","prompt":"Write a short poem.","temperature":0,"max_tokens":128}'
+```
 
 ### Uninstall Demo
 
