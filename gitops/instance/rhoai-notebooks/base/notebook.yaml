@@ -81,7 +81,6 @@ spec:
             # memory: 8Gi
             # NOTE: only needed for spyre
             # ibm.com/spyre_pf: '1'
-            ibm.com/spyre_pf: "1"
           requests:
             cpu: "1"
             memory: 8Gi
