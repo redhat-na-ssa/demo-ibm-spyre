@@ -79,11 +79,14 @@ spec:
           limits:
             # cpu: "1"
             # memory: 8Gi
+            # NOTE: only needed for spyre
+            # ibm.com/spyre_pf: '1'
             ibm.com/spyre_pf: "1"
           requests:
             cpu: "1"
             memory: 8Gi
-            ibm.com/spyre_pf: "1"
+            # NOTE: only needed for spyre
+            # ibm.com/spyre_pf: "1"
         volumeMounts:
         - mountPath: /dev/shm
           name: shm
@@ -148,13 +151,9 @@ spec:
           limits:
             cpu: 100m
             memory: 64Mi
-            # NOTE: only needed for spyre
-            # ibm.com/spyre_pf: '1'
           requests:
             cpu: 100m
             memory: 64Mi
-            # NOTE: only needed for spyre
-            # ibm.com/spyre_pf: '1'
         volumeMounts:
         - mountPath: /etc/oauth/client
           name: oauth-client
