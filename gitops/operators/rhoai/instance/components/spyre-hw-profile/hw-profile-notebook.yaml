@@ -15,10 +15,10 @@ spec:
     identifier: cpu
     minCount: "1"
     resourceType: CPU
-  - defaultCount: 1Mi
+  - defaultCount: 1Gi
     displayName: Memory
     identifier: memory
-    minCount: 1Mi
+    minCount: 1Gi
     resourceType: Memory
   - defaultCount: 1
     displayName: ibm.com/spyre_pf
