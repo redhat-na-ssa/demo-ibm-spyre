@@ -4,6 +4,8 @@ kind: Kustomization
 components:
   - components/config-custom-runtimes
   - components/config-hw-profile
+  - components/spyre-hw-profile
+  - components/basic-hw-profile
 
 resources:
   - dsc.yaml
