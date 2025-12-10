@@ -1,6 +1,6 @@
-# Demo IBM Spyre Hardware on OpenShift
+# Demo Spyre AI accelerator with x86 on OpenShift (Technology Preview only)
 
-This demo has been created for use with IBM Spyre Hardware on the Red Hat OpenShift platform.  
+This demo has been created for use by IBM Research clients who are using the Spyre AI accelerator with x86 on the Red Hat OpenShift platform as a Technology Preview feature.
 
 The following automates the configuration of prerequisites and is specifically intended for
 users with `cluster-admin` or an operations team.
